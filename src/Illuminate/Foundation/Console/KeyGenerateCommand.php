@@ -29,23 +29,25 @@ class KeyGenerateCommand extends Command
      */
     public function fire()
     {
-        $key = $this->getRandomKey($this->laravel['config']['app.cipher']);
+        // BMM - Disabling generate key command to avoid security vunerablility. 12/22/2015
+        throw new \Exception('Generate key command not supported.');
+        // $key = $this->getRandomKey($this->laravel['config']['app.cipher']);
 
-        if ($this->option('show')) {
-            return $this->line('<comment>'.$key.'</comment>');
-        }
+        // if ($this->option('show')) {
+        //     return $this->line('<comment>'.$key.'</comment>');
+        // }
 
-        $path = base_path('.env');
+        // $path = base_path('.env');
 
-        if (file_exists($path)) {
-            file_put_contents($path, str_replace(
-                'APP_KEY='.$this->laravel['config']['app.key'], 'APP_KEY='.$key, file_get_contents($path)
-            ));
-        }
+        // if (file_exists($path)) {
+        //     file_put_contents($path, str_replace(
+        //         'APP_KEY='.$this->laravel['config']['app.key'], 'APP_KEY='.$key, file_get_contents($path)
+        //     ));
+        // }
 
-        $this->laravel['config']['app.key'] = $key;
+        // $this->laravel['config']['app.key'] = $key;
 
-        $this->info("Application key [$key] set successfully.");
+        // $this->info("Application key [$key] set successfully.");
     }
 
     /**

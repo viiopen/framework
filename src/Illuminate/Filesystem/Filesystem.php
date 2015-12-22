@@ -33,6 +33,8 @@ class Filesystem
      */
     public function get($path)
     {
+        // BMM - canonizing path. 12/22/2015
+        $path = realpath($path);
         if ($this->isFile($path)) {
             return file_get_contents($path);
         }
