@@ -92,11 +92,13 @@ class Filesystem
      */
     public function prepend($path, $data)
     {
-        if ($this->exists($path)) {
-            return $this->put($path, $data.$this->get($path));
-        }
+       throw new \Exception('Prepending to files not supported.');
 
-        return $this->put($path, $data);
+//	if ($this->exists($path)) {
+//            return $this->put($path, $data.$this->get($path));
+//        }
+//
+//        return $this->put($path, $data);
     }
 
     /**
